@@ -1,0 +1,29 @@
+INNERCLY v114 — START HERE
+
+1. Extract this ZIP into a new folder.
+2. Double-click START_INNERCLY.bat.
+3. Keep the black Command Prompt window open while using InnerCly.
+4. Sign in with your existing account. The configured Owner username is @innercly_owner by default unless your setup already configures another owner.
+
+Do not open index.html directly; the app needs the local server and database.
+Do not open files inside the backups folder; v40 and v80 are preserved master backups, not launch files.
+
+Current app build: v114 — Account-header startup scope fix: prevent a standalone account-header helper from referencing variables local to another script. This previously could throw during authenticated startup and prevent Home/Stories initialization. Story renderer and upper layout are not redesigned.
+Premium billing is not enabled in this build. The silver badge is reserved for a future active Premium subscription and cannot be manually granted.
+
+Version verification note: this package reports build v114 from /api/build and the launcher requires v114, so it replaces an older running InnerCly server instead of silently reusing it.
+
+Badge visibility update: active account badges now appear beside user names across feed posts, comments, profile and friends, discovery/search, chat messages, group/event owners, Marketplace sellers, Stories, and safety/owner lists.
+
+
+v112 session-hint fix (carried forward): the early page loader compares saved account-state hints across localStorage and sessionStorage to reduce stale account-state selection after reload.
+
+
+v109 targeted fix (carried forward): persistent session cookie settings are selected using the actual request origin; session restoration begins behind the opening animation; Home renders this account's last feed cache while refreshing from the server. If a cookie cannot be confirmed after login, the sign-in page explains that instead of silently reloading into another login prompt.
+
+
+v109 targeted startup correction (carried forward): session restoration uses one shared in-flight check and retries after transient startup failures; the Home feed can show existing browser-saved posts while the current server feed loads.
+
+
+
+Feed refresh improvement: Home now retries its first feed request after brief startup failures, and overlapping requests can no longer discard a successful response just because a newer request started and then failed.
